@@ -21,10 +21,10 @@ export default function Home() {
           captures who you are."
         />
       </div>
-      {/* <BioProvider> */}
+      <BioProvider>
         <UserInput />
         <Output />
-      {/* </BioProvider> */}
+      </BioProvider>
     </main>
   );
 }

@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,6 +19,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import MetaIcon from "../icons/Meta";
 import MistralIcon from "../icons/Mistral";
 import { Slider } from "../ui/slider";
@@ -35,7 +39,7 @@ const formSchema = z.object({
   temperature: z
     .number()
     .min(0, "Temperature must be atleast 0")
-    .max(2, "Temperature must be at most 1"),
+    .max(2, "Temperature must be at most 2"),
   content: z
     .string()
     .min(50, "Content should atlest have 50 characters.")
@@ -73,12 +77,9 @@ const UserInput = () => {
     },
   });
 
-  const { setOutput, setLoading, loading } = useContext(BioContext);
+  const { setOutput, setLoading, loading, output } = useContext(BioContext);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
     setLoading(true);
 
     const userInputValues = `
@@ -93,7 +94,7 @@ const UserInput = () => {
         values.temperature,
         values.model
       );
-      // console.log(data);
+      
       setOutput(data);
       setLoading(false);
     } catch (e) {
@@ -184,9 +185,10 @@ const UserInput = () => {
                 render={({ field: { value, onChange } }) => (
                   <FormItem>
                     <FormLabel className="flex items-center justify-between pb-2">
-                      <span className="flex items-center justify-center">
+                      <span className="items-center justify-center hidden md:flex">
                         Creativity
-                        <Tooltip>
+                        <span className=""></span>
+                        <Tooltip delayDuration={150}>
                           <TooltipTrigger>
                             <Info className="w-4 h-4 ml-1 cursor-pointer" />
                           </TooltipTrigger>
@@ -202,6 +204,26 @@ const UserInput = () => {
                             </p>
                           </TooltipContent>
                         </Tooltip>
+                      </span>
+                      <span className="items-center justify-center flex md:hidden">
+                        Creativity
+                        <Popover>
+                          <PopoverTrigger>
+                            <Info className="w-4 h-4 ml-1 cursor-pointer" />
+                          </PopoverTrigger>
+                          <PopoverContent
+                            sideOffset={48}
+                            collisionPadding={16}
+                            className="max-w-sm"
+                            avoidCollisions
+                          >
+                            <p className="text-sm break-words font-medium">
+                              A higher setting produces more creative and
+                              surprising bios, while a lower setting sticks to
+                              more predictable and conventional styles.
+                            </p>
+                          </PopoverContent>
+                        </Popover>
                       </span>
                       <span>{value}</span>
                     </FormLabel>
