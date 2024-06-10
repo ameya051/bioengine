@@ -68,7 +68,7 @@ const UserInput = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      model: "llama3-8b-8192",
+      model: "llama3-70b-8192",
       temperature: 1,
       content: "",
       type: "personal",
@@ -77,7 +77,7 @@ const UserInput = () => {
     },
   });
 
-  const { setOutput, setLoading, loading, output } = useContext(BioContext);
+  const { setOutput, setLoading, loading } = useContext(BioContext);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
@@ -94,7 +94,7 @@ const UserInput = () => {
         values.temperature,
         values.model
       );
-      
+
       setOutput(data);
       setLoading(false);
     } catch (e) {
@@ -130,6 +130,19 @@ const UserInput = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
+                          <SelectItem value="llama3-70b-8192">
+                            <div className="flex items-start gap-3 text-muted-foreground">
+                              <MetaIcon className="size-5" />
+                              <div>
+                                <p>
+                                  <span className="text-foreground font-medium mr-2">
+                                    Llama 3
+                                  </span>
+                                  70B (Recommended)
+                                </p>
+                              </div>
+                            </div>
+                          </SelectItem>
                           <SelectItem value="llama3-8b-8192">
                             <div className="flex items-start gap-3 text-muted-foreground">
                               <MetaIcon className="size-5" />
@@ -152,19 +165,6 @@ const UserInput = () => {
                                     Mixtral
                                   </span>
                                   8x7b
-                                </p>
-                              </div>
-                            </div>
-                          </SelectItem>
-                          <SelectItem value="llama3-70b-8192">
-                            <div className="flex items-start gap-3 text-muted-foreground">
-                              <MetaIcon className="size-5" />
-                              <div>
-                                <p>
-                                  <span className="text-foreground font-medium mr-2">
-                                    Llama 3
-                                  </span>
-                                  70B
                                 </p>
                               </div>
                             </div>
@@ -262,7 +262,7 @@ const UserInput = () => {
                     <FormControl>
                       <Textarea
                         {...field}
-                        placeholder="Add your old twitter bio or write few sentances about yourself"
+                        placeholder="Add your old twitter bio or write few sentences about yourself"
                         className="min-h-[10rem]"
                       />
                     </FormControl>

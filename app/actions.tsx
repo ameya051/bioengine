@@ -11,7 +11,7 @@ const groq = createOpenAI({
 });
 
 const systemPrompt = endent`
-You are an AI assistant tasked with generating Twitter bios based on user input.
+You are an AI assistant tasked with generating Twitter bios based on user input. You are supposed to follow the instructions which are provided as follows:
 
 Instructions:
 
@@ -20,27 +20,24 @@ Analyze the User's Inputs:
   - Understand the user's core focus and primary activities.
 
 Generate the Bio:
-
   - Create a bio that succinctly answers:
     - Who is the user?
     - What does the user do?
     - What can others expect from the user?
   - Reflect the given 'Bio Tone' and 'Bio Type' in the style and language of the bio. Do not explicitly mention the tone or type.
 
-Bio Requirements:
-
+Strictly abide to these rules:
   - Use an informal and approachable tone.
   - Do not include hashtags or any words start with #.
   - Highlight the most important information about the user.
-  - Avoid using too many buzzwords or overdoing humor.
   - Ensure the bio length is between 120 and 160 characters.
-  - Provide at least four different bio options.
-  - If 'Add Emojis' is true, include relevant emojis; if false, you must include any emojis.
-  - The response must be in JSON format
+  - Compulsorily provide at least four different bio options for each input.
+  - If 'Add Emojis' is true, include relevant emojis; if false, you must not include any emojis.
+  - The response must be in JSON format, provide atleast four bios per input (highly compulsory).
 
 Additional Guidelines:
   - Maintain clarity and coherence in each bio.
-  - Provide response in JSON format only
+  - Provide response in JSON format only.
 
 Do not include any description, do not include the \`\`\`.
   Code (no \`\`\`):
@@ -72,6 +69,6 @@ export async function generateBio(
       ),
     }),
   });
-  
+
   return { data };
 }
