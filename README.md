@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BioEngine - A Bio Generator
+
+## Table Of Contents
+
+- [Table Of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Authors](#authors)
+
+## About The Project
+
+Ever struggled with coming up with a memorable Twitter (now X) bio? Then you're at the right stop! Introducing BioEngine, an AI-Powered Twitter Bio Generator that is easy to use. Built with Nextjs, Shadcn UI, TypeScript and Groq LLMs Provider.
+
+## Built With
+
+BioEngine is built with:
+
+* [NextJS](https://nextjs.org): A React meta-framework
+* [Shadcn-UI](https://ui.shadcn.com): A UI components library
+* [TypeScript](https://www.typescriptlang.org): For type safety
+* [Groq](https://groq.com): An LLM provider
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+<a href="https://git-scm.com/downloads">Git</a> is a distributed version control system used for software development. It allows multiple developers to work on the same codebase simultaneously, keeping track of changes and managing versions. It also enables users to revert changes and collaborate more effectively.
+
+<a href="https://nodejs.org/en">Node.js</a> is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.
+
+### Installation
+
+Open up your terminal, and write the following commands to it -
+
+```bash
+git clone https://github.com/ameya051/ai-twitter-bio-generator
+```
+
+```bash
+cd ai-twitter-bio-generator
+```
+
+```bash
+npm install
+```
+
+```Rename .env.example to .env.local and fill the required fields```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authors
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Ameya Shrivastava** - [Ameya Shrivastava](https://github.com/ameya051) - *BioEngine*
