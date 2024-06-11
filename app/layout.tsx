@@ -19,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(GeistSans.variable, "font-sans")}>
-        <DotPattern className="-z-10 opacity-50"/>
-        <TooltipProvider >{children}</TooltipProvider>
+        <DotPattern className="-z-10 opacity-50" />
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );
